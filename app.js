@@ -1,5 +1,7 @@
 import { Api } from './lib.js';
 
+const api = new Api('https://myserver7-8.herokuapp.com');
+
 
 const rootEl = document.getElementById('root')
 
@@ -9,24 +11,21 @@ addFormEl.innerHTML = `
 <div class="container">
     <div class="row">
         <div class="col">
-            <input data-id="link" class="form-control" type="text" placeholder="Введите текст или вставьте ссылку">
-        </div>
-        <div class="col-4">
-            <select data-id="type" class="form-control">
-                <option value="regular">Обычный</option>
-                <option value="image">Картинка</option>
-                <option value="video">Видео</option>
-                <option value="audio">Аудио</option>
-            </select>
-        </div>
-        <div class="col">
-            <button data-id="button" class="btn btn-primary">Ок</button>
+            <div class="form-group">
+                <input data-id="link" class="form-control mb-2" type="text" placeholder="Введите текст">
+                <select data-id="type" class="custom-select mb-2">
+                    <option value="regular">Обычный</option>
+                    <option value="image">С картинкой</option>
+                    <option value="audio">С музыкой</option>
+                    <option value="video">С видео</option>
+                </select>
+                <button data-id="button" class="btn btn-primary">Добавить</button>
+            </div>
         </div>
     </div>
 </div>    
 `;
 rootEl.appendChild(addFormEl);
-const api = new Api('https://myserver7-8.herokuapp.com');
 
 const linkEl = addFormEl.querySelector('[data-id=link]');
 linkEl.value = localStorage.getItem('link');
@@ -51,7 +50,7 @@ buttonEl.addEventListener('click', (ev) => {
     api.postJSON('/posts',data, (ev) => {
         loadData();
         linkEl.value = '';
-        typeEl.value = 'Обычный';
+        typeEl.value = 'regular';
         localStorage.clear();
         },handleError());
 });
@@ -106,8 +105,6 @@ const rebuildList = data => {
                     <span class="badge badge-secondary">${item.likes}</span>
                     <button type="button" class="btn btn-primary btn-sm" data-action="like">👍</button>
                     <button type="button" class="btn btn-primary btn-sm" data-action="dislike">👎</button>
-                </div>
-            </div>
             `;
 
         }
@@ -127,7 +124,7 @@ const rebuildList = data => {
             if (ev.target.dataset.action === 'like') {
                 api.postJSON(`/posts/${item.id}/likes`, rebuildList, handleError);
             } else if (ev.target.dataset.action === 'dislike') {
-                api.deleteJSON(`/posts/${item.id}/dislikes`, rebuildList, handleError);
+                api.deleteJSON(`/posts/${item.id}/likes`, rebuildList, handleError);
             } else if (ev.target.dataset.action === 'remove') {
                 api.deleteJSON(`/posts/${item.id}`, rebuildList, handleError);
             }
