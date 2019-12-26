@@ -74,9 +74,9 @@ const rebuildList = data => {
             <div class = "col px-md-7">
                 <img src = "${item.value}" class = "card-img-top" width = "100" height = "100">
                 <div class = "card-body">
-                    <button data-action = "like" class = "btn btn-primary">♡${item.likes}</button>
-                    <button data-action = "dislike" class = "btn btn-primary">👎🏻</button>
-                    <button data-action = "remove" class = "btn btn-primary">delete</button>
+                    <span class="badge badge-secondary">${item.likes}</span>
+                    <button type="button" class="btn btn-primary btn-sm" data-action="like">👍</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-action="dislike">👎</button>
                 </div>
             </div>
             `;
@@ -88,9 +88,9 @@ const rebuildList = data => {
                     <video src = "${item.value}" class = "embed-responsive-item" controls>
                 </div>
                 <div class = "col">
-                    <button data-action = "like" class = "btn btn-primary">♡ ${item.likes} </button>
-                    <button data-action = "dislike" class = "btn btn-primary">👎🏻</button>
-                    <button data-action = "remove" class = "btn btn-primary">delete</button>
+                    <span class="badge badge-secondary">${item.likes}</span>
+                    <button type="button" class="btn btn-primary btn-sm" data-action="like">👍</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-action="dislike">👎</button>
                 </div>
             </div>
             `;
@@ -103,9 +103,9 @@ const rebuildList = data => {
                     <audio src = "${item.value}" class = "embed-responsive-item" controls>
                 </div>
                 <div class ="col">
-                    <button data-action = "like" class = "btn btn-primary">♡${item.likes}</button>
-                    <button data-action = "dislike" class = "btn btn-primary">👎🏻</button>
-                    <button data-action = "remove" class = "btn btn-primary">delete</button>
+                    <span class="badge badge-secondary">${item.likes}</span>
+                    <button type="button" class="btn btn-primary btn-sm" data-action="like">👍</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-action="dislike">👎</button>
                 </div>
             </div>
             `;
@@ -116,9 +116,9 @@ const rebuildList = data => {
             <div class = "card">
                 <div class = "card-body">
                     <p class="card-text">${item.value}</p>
-                    <button data-action = "like" class = "btn btn-primary">♡${item.likes}</button>
-                    <button data-action = "dislike" class = "btn btn-primary">👎🏻</button>
-                    <button data-action = "remove" class = "btn btn-primary">delete</button>
+                    <span class="badge badge-secondary">${item.likes}</span>
+                    <button type="button" class="btn btn-primary btn-sm" data-action="like">👍</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-action="dislike">👎</button>
                 </div>
             </div>
             `;
