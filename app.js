@@ -72,7 +72,7 @@ const rebuildList = data => {
             postEl.innerHTML = `
             <div class = "col px-md-7">
                 <img src = "${item.value}" class = "card-img-top" width = "100" height = "100">
-                <div class = "card-body">
+            <div class = "card-body">
                     <span class="badge badge-secondary">${item.likes}</span>
                     <button type="button" class="btn btn-primary btn-sm" data-action="like">👍</button>
                     <button type="button" class="btn btn-primary btn-sm" data-action="dislike">👎</button>
@@ -122,7 +122,7 @@ const rebuildList = data => {
         }
         postEl.addEventListener('click', (ev) => {
             if (ev.target.dataset.action === 'like') {
-                api.postJSON(`/posts/${item.id}/likes`, rebuildList, handleError);
+                api.postJSON(`/posts/${item.id}/likes`, null, rebuildList, handleError);
             } else if (ev.target.dataset.action === 'dislike') {
                 api.deleteJSON(`/posts/${item.id}/likes`, rebuildList, handleError);
             } else if (ev.target.dataset.action === 'remove') {
@@ -132,8 +132,6 @@ const rebuildList = data => {
         postsEl.appendChild(postEl);
     }
 }
-
-
 
 const handleError = (ev) => {
     console.log(ev);

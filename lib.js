@@ -20,8 +20,6 @@ export class Api {
         this.makeRequest(path, 'DELETE', [], null, onSuccess, onFail)
     };
 
-
-
     makeRequest(path, method, headers = [], body=null, onSuccess, onError) {
         const xhr = new XMLHttpRequest();
         xhr.open(method, `${this.baseUrl}${path}`);
